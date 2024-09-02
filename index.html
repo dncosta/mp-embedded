@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagar Versão Embutida</title>
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Pagamento</th>
+        </tr>
+        <tr>
+            <td>
+                <div class="cho-container"></div>
+                <script>
+                    // Adicione as credenciais de sua conta Mercado Pago junto ao SDK
+                    const mp = new MercadoPago('APP_USR-78d069d8-1641-47c5-b887-c18b0d240a98', {
+                        locale: 'pt-BR'
+                    });
+
+                    // Renderiza o checkout diretamente na página
+                    mp.checkout({
+                        preference: {
+                            id: '50153504-ed3ca025-ee06-4e1b-921f-05e4128fdc5e' // Indique o ID da preferência
+                        },
+                        render: {
+                            container: '.cho-container', // Classe do CSS para renderizar o checkout embutido
+                            label: 'Pagar (Botão gerado pelo SDK)', // Texto do botão de pagamento (opcional)
+                            type: 'custom' // Utilize 'redirect' para embutir o checkout diretamente na página
+                        }
+                    });
+                </script>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
